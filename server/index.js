@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import multer from "multer";
-import path from "path";
+import path from 'path';
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -15,7 +15,9 @@ const storage = multer.diskStorage({
   },
 });
 
-const buildpath = path.join(__dirname, "../client/dist");
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const buildpath = path.join(__dirname, '../client/dist');
+
 app.use(express.static(buildpath));
 
 export const upload = multer({
