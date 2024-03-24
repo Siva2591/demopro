@@ -1,4 +1,4 @@
-import { Button, Card, Switch, Tabs } from "antd";
+import { Button, Card, Switch, Tabs, message } from "antd";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -35,8 +35,14 @@ const HomePage = () => {
 
     axios
       .post("http://13.201.3.66:8000/upload-data", form)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res)
+        message.success("Form submited successfully")
+      })
+      .catch((err) =>{
+        console.log(err) 
+        message.error("Somthing went wrong")
+      })
   };
 
   const items = [
