@@ -14,6 +14,9 @@ const storage = multer.diskStorage({
   },
 });
 
+const buildpath = path.join(__dirname, "../client/dist");
+app.use(express.static(buildpath));
+
 export const upload = multer({
   storage,
 });
@@ -85,6 +88,9 @@ app.post(
   }
 );
 
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+});
 app.listen(process.env.PORT || 8000, () => {
   console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
 });
