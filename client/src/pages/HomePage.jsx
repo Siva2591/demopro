@@ -34,7 +34,7 @@ const HomePage = () => {
     form.append("notification", JSON.stringify(notification));
 
     axios
-      .post("http:// 13.232.109.53:8080/upload-data", form)
+      .post("http://13.232.109.53:8000/upload-data", form)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
